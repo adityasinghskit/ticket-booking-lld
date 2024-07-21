@@ -26,7 +26,7 @@ public class TheaterController {
     private final ScreenService screenService;
 
     @PostMapping(value = "/theater/add", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Response> addTheater(@RequestBody @Valid AddRequestDto requestBody){
+    public ResponseEntity<Response> addTheater(@RequestBody @Valid AddRequestDto requestBody) {
         Theater savedTheater = theaterService.saveTheater(requestBody);
         return ResponseEntity.ok(new Response(HttpStatus.OK, "Success",
                 Map.of("id", savedTheater.getId())));
@@ -34,10 +34,11 @@ public class TheaterController {
     }
 
     @PostMapping(value = "/screen/add", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Response> addScreen(@RequestBody @Valid AddScreenRequestDto requestBody){
+    public ResponseEntity<Response> addScreen(@RequestBody @Valid AddScreenRequestDto requestBody) {
         Screen savedScreen = screenService.saveScreen(requestBody);
         return ResponseEntity.ok(new Response(HttpStatus.OK, "Success",
                 Map.of("id", savedScreen.getId())));
+
 
     }
 

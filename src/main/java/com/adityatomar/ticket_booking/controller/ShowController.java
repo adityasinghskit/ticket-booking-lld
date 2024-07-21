@@ -2,7 +2,6 @@ package com.adityatomar.ticket_booking.controller;
 
 import com.adityatomar.ticket_booking.dto.AddShowRequestDto;
 import com.adityatomar.ticket_booking.dto.Response;
-import com.adityatomar.ticket_booking.model.Screen;
 import com.adityatomar.ticket_booking.model.Show;
 import com.adityatomar.ticket_booking.service.ShowService;
 import jakarta.validation.Valid;
@@ -23,7 +22,7 @@ public class ShowController {
     private final ShowService showService;
 
     @PostMapping(value = "/add", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Response> addShow(@RequestBody @Valid AddShowRequestDto requestBody){
+    public ResponseEntity<Response> addShow(@RequestBody @Valid AddShowRequestDto requestBody) {
         Show show = showService.createShow(requestBody);
         return ResponseEntity.ok(new Response(HttpStatus.OK, "Success",
                 Map.of("id", show.getId())));
